@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./ListGroup.module.css";
+import styles from "./ListGroup.module.css";
 
 interface PhilosopherInfo {
     id: number;
@@ -21,9 +21,7 @@ function ListGroup() {
             <ul className="list-group">
                 {philosophers.map((p) => (
                     <li
-                        // todo Временное решение, стиль должен разрешаться через className и CSS
-                        style={phisolopherIndex === p.id ? {color: "violet"} : {color: "lightblue"}}
-                        className={phisolopherIndex === p.id ? "list-group-item-active" : "list-group-item"}
+                        className={phisolopherIndex === p.id ? styles["list-group-item-active"] : styles["list-group-item"]}
                         onClick={() => setPhisolopherIndex(p.id)}
                         key={p.name.toString()}>
                             {p.name}
