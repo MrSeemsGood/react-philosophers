@@ -56,6 +56,13 @@
     background-color: hsl(268, 100%, 23%);
 }
 
+.list-group-item-found {
+    padding: 8px 3px;
+    margin: 5px;
+    background-color: #00336d;
+    border: 2px dashed rgb(189, 202, 0);
+}
+
 .info-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

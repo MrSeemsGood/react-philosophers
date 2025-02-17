@@ -1,10 +1,33 @@
 import { useState } from "react";
 import styles from "./Home.module.css";
 
-import { KnowledgeElement, PhilosopherInfo } from "../components/data/interfaces.tsx";
+import { KnowledgeElement, PhilosopherInfo } from "../components/interfaces.tsx";
 
-import philosophers from "../components/data/philosopherList.tsx";
+import philosophers from "../components/philosopherList.tsx";
 import { Link } from "react-router-dom";
+
+function extractNamesFromKnowledgeElements(ems : KnowledgeElement[]) {
+    let names = [];
+    for (var e of ems) {
+        names.push(e.name.toLowerCase());
+    }
+    
+    return names;
+}
+
+function elementsHaveSearch(ems : string[], s : string) {
+    if (s == "") {
+        return false;
+    }
+
+    for (var e of ems) {
+        if (e.startsWith(s)) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 function Home() {
     // Хранение текущего (выбранного) философа
@@ -26,6 +49,9 @@ function Home() {
         description: "",
         wikilink: ""
     });
+
+    // Хранение результата поиска
+    const [search, setSearch] = useState<string>("");
 
     // Хранение способа сортировки
     const imgSortAz = "/src/assets/alphabet.png";
@@ -50,7 +76,10 @@ function Home() {
                         p.period === period
                     )).map((p) => (
                         <li
-                            className={ph.name === p.name ? styles["list-group-item-active"] : styles["list-group-item"]}
+                            className={
+                                ph.name === p.name ? styles["list-group-item-active"] : 
+                                elementsHaveSearch(extractNamesFromKnowledgeElements(p.info), search) ? styles["list-group-item-found"] :
+                                styles["list-group-item"]}
                             onClick={() => setPh(p)}>
                                 {p.name}
                         </li>
@@ -85,12 +114,12 @@ function Home() {
         <>
         <div className={styles["ui-grid"]}>
             <header className={styles["header-container"]}>
-                <p>
+                <p style={{ fontWeight : "bold", fontSize : "1.25rem", color : "lightsteelblue" }}>
                     Философы
                 </p>
                 <nav style={{ display: 'flex', padding: '5px', placeItems: 'center' }}>
                     <Link to={"/"} style={{ padding: '5px'}}>Главная</Link>
-                    <Link to={"/Combine"} style={{ padding: '5px' }}>Комбинирование</Link>
+                    {/* <Link to={"/Combine"} style={{ padding: '5px' }}>Комбинирование</Link> */}
                 </nav>
                 <div style={{ display: 'flex', padding: '5px', placeItems: 'center' }}>
                     <button type="submit" onClick={
@@ -108,8 +137,18 @@ function Home() {
                     </button>
                     <p style={{ margin: '0px 0px 0px 5px' }}>Сортировка</p>
                 </div>
+                <div style={{ display: 'flex', padding: '5px', placeItems: 'center' }}>
+                    <button type="submit" disabled={true}>
+                        <img style={{ height: '1.5em' }} src="/src/assets/search.png" alt="buttonpng" />
+                    </button>
+                    <input style={{ margin: '0px 0px 0px 5px', height: '1.5rem' }} name="searchInput" placeholder="Поиск элемента знания..." onChange={
+                        (e) => {
+                            setSearch(e.target.value.trim().toLowerCase());
+                        }
+                    }/>
+                </div>
                 <p>
-                    Сделано в React TS: https://react.dev/
+                    Сделано в ReactTS
                 </p>
             </header>
 
