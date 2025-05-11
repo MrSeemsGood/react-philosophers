@@ -5,6 +5,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css';
 
 import Home from './pages/Home.tsx';
+import Schools from './pages/Schools.tsx';
+import Books from './pages/Books.tsx';
+import Terms from './pages/Terms.tsx';
+import Exams from './pages/Exams.tsx';
 import Combine from './pages/Combine.tsx';
 
 const router = createBrowserRouter([
@@ -15,6 +19,22 @@ const router = createBrowserRouter([
   {
     path: "/Combine",
     element: <Combine />,
+  },
+  {
+    path: "/Schools",
+    element: <Schools />,
+  },
+  {
+    path: "/Books",
+    element: <Books />,
+  },
+  {
+    path: "/Terms",
+    element: <Terms />,
+  },
+  {
+    path: "/Exams",
+    element: <Exams />,
   }
 ]);
 

@@ -1,5 +1,5 @@
 * {
-    color: rgb(255, 243, 227);
+    color: rgb(0, 0, 0);
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     padding: 0px;
@@ -10,6 +10,7 @@
     display: grid;
     grid-template-areas: 
     "h h"
+    "t t"
     "m s"
     ;
     gap: 8px;
@@ -25,6 +26,14 @@
     height: 2rem;
     padding: 0.5rem 1rem;
     place-items: center;
+}
+
+.top-container {
+    grid-area: t;
+    padding: 0.5rem 1rem;
+    place-items: center;
+    display: flex;
+    grid-gap: 8px;
 }
 
 .sidebar-container {
@@ -48,18 +57,21 @@
     padding: 10px 5px;
     margin: 5px;
     background-color: #00336d;
+    color:azure;
 }
 
 .list-group-item-active {
     padding: 10px 5px;
     margin: 5px;
     background-color: hsl(268, 100%, 23%);
+    color:azure;
 }
 
 .list-group-item-found {
     padding: 8px 3px;
     margin: 5px;
     background-color: #00336d;
+    color:azure;
     border: 2px dashed rgb(189, 202, 0);
 }
 

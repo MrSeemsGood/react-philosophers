@@ -34,6 +34,7 @@ function Home() {
     const [ph, setPh] = useState<PhilosopherInfo>({
         name: "",
         period: "",
+        empirism: false,
         info: [],
         birth_year: 0,
         death_year: 0
@@ -52,6 +53,9 @@ function Home() {
 
     // Хранение результата поиска
     const [search, setSearch] = useState<string>("");
+
+    // Хранение текущего выбранного направления (Эмпиризм/Идеализм)
+    const [empirism, setEmpirism] = useState<boolean>(true);
 
     // Хранение способа сортировки
     const imgSortAz = "/src/assets/alphabet.png";
@@ -78,7 +82,7 @@ function Home() {
                         <li
                             className={
                                 ph.name === p.name ? styles["list-group-item-active"] : 
-                                elementsHaveSearch(extractNamesFromKnowledgeElements(p.info), search) ? styles["list-group-item-found"] :
+                                elementsHaveSearch(extractNamesFromKnowledgeElements(p.info), search) || p.empirism === empirism ? styles["list-group-item-found"] :
                                 styles["list-group-item"]}
                             onClick={() => setPh(p)}>
                                 {p.name}
@@ -114,12 +118,16 @@ function Home() {
         <>
         <div className={styles["ui-grid"]}>
             <header className={styles["header-container"]}>
-                <p style={{ fontWeight : "bold", fontSize : "1.25rem", color : "lightsteelblue" }}>
+                <p style={{ fontWeight : "bold", fontSize : "1.25rem", color : "darkblue" }}>
                     Философы
                 </p>
                 <nav style={{ display: 'flex', padding: '5px', placeItems: 'center' }}>
                     <Link to={"/"} style={{ padding: '5px'}}>Главная</Link>
-                    {/* <Link to={"/Combine"} style={{ padding: '5px' }}>Комбинирование</Link> */}
+                    <Link to={"/Schools"} style={{ padding: '5px'}}>Направления</Link>
+                    <Link to={"/Books"} style={{ padding: '5px'}}>Книги</Link>
+                    <Link to={"/Terms"} style={{ padding: '5px'}}>Понятия</Link>
+                    <Link to={"/Exams"} style={{ padding: '5px'}}>Билеты</Link>
+                    <Link to={"/Combine"} style={{ padding: '5px' }}>Комбинирование</Link>
                 </nav>
                 <div style={{ display: 'flex', padding: '5px', placeItems: 'center' }}>
                     <button type="submit" onClick={
@@ -151,6 +159,16 @@ function Home() {
                     Сделано в ReactTS
                 </p>
             </header>
+
+            <div className={styles["top-container"]}>
+                {/* TODO Подобрать стиль */}
+                <button style={{ backgroundColor: 'green' }} onClick={
+                    () => setEmpirism(true)
+                }>Эмпиризм-Рационализм</button>
+                <button style={{ backgroundColor: 'lightblue' }} onClick={
+                    () => setEmpirism(false)
+                }>Материализм-Идеализм</button>
+            </div>
 
             <main className={styles["main-container"]}>
                 {generatePhListContainer("Античность")}

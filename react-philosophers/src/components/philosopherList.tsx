@@ -26,7 +26,8 @@ const philosophers: PhilosopherInfo[] = [
             }
         ],
         birth_year: -428,
-        death_year: -348
+        death_year: -348,
+        empirism: false
     },
     {
         name: "Аристотель",
@@ -46,7 +47,8 @@ const philosophers: PhilosopherInfo[] = [
             }
         ],
         birth_year: -384,
-        death_year: -322
+        death_year: -322,
+        empirism: true
     },
     {
         name: "Фрэнсис Бэкон",
@@ -60,7 +62,8 @@ const philosophers: PhilosopherInfo[] = [
             }
         ],
         birth_year: 1561,
-        death_year: 1626
+        death_year: 1626,
+        empirism: true
     },
     {
         name: "Иммануил Кант",
@@ -74,7 +77,8 @@ const philosophers: PhilosopherInfo[] = [
             }
         ],
         birth_year: 1724,
-        death_year: 1804
+        death_year: 1804,
+        empirism: false
     },
 ];
 

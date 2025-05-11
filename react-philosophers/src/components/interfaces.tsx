@@ -10,5 +10,6 @@ export interface PhilosopherInfo {
     birth_year: number,
     death_year: number,
     period: string,
+    empirism: boolean,
     info: KnowledgeElement[]
 };
