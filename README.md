@@ -5,17 +5,16 @@
 
 ## Установка
 
-1. Установить Node Manager for Windows: https://github.com/coreybutler/nvm-windows/releases (версия на момент установки: 1.2.2)
+1. Установить Node Manager for Windows: https://github.com/coreybutler/nvm-windows/releases (версия на момент написания документа: 1.2.2)
 2. Открыть командную строку (PowerShell) от имени администратора и выполнить команду:
   `nvm install lts`
-3. При успешной установке появится текст:
+3. При успешной установке появится текст, выполнить команду из текста:
   ```
   If you want to use this version, type:
   
   nvm use <версия>
   ```
 
-  Выполнить эту команду
 4. Перейти в директорию проекта в поддиректорию react-philosophers
 5. Выполнить команду `npm install`
 6. Выполнить команду `npm run dev`
