@@ -1,3 +1,4 @@
+// Интерфейс с описанием структуры элемента знания
 export interface KnowledgeElement {
     type: string,
     name: string,
@@ -5,6 +6,7 @@ export interface KnowledgeElement {
     wikilink: string
 };
 
+// Интерфейс с описанием структуры информации о философе
 export interface PhilosopherInfo {
     name: string,
     birth_year: number,
